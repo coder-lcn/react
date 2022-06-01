@@ -80,6 +80,7 @@ export function useContext<T>(Context: ReactContext<T>): T {
 export function useState<S>(
   initialState: (() => S) | S,
 ): [S, Dispatch<BasicStateAction<S>>] {
+  console.log('start useState [packages/react/src/ReactHooks.js - 83]');
   const dispatcher = resolveDispatcher();
   return dispatcher.useState(initialState);
 }

@@ -630,6 +630,7 @@ export function resetHooksAfterThrow(): void {
 }
 
 function mountWorkInProgressHook(): Hook {
+  console.log("mount hook to fiber's memoizedState field [packages/react-reconciler/src/ReactFiberHooks.old.js - 633]");
   const hook: Hook = {
     memoizedState: null,
 
@@ -1522,9 +1523,10 @@ function mountState<S>(
     BasicStateAction<S>,
   > = (queue.dispatch = (dispatchSetState.bind(
     null,
-    currentlyRenderingFiber,
+    currentlyRenderingFiber, 
     queue,
   ): any));
+  console.log('mount state and start queue [packages/react-reconciler/src/ReactFiberHooks.old.js - 1529]')
   return [hook.memoizedState, dispatch];
 }
 
@@ -2229,6 +2231,7 @@ function dispatchSetState<S, A>(
   queue: UpdateQueue<S, A>,
   action: A,
 ) {
+  console.log('start setState [packages/react-reconciler/src/ReactFiberHostConfig.js - 2234]');
   if (__DEV__) {
     if (typeof arguments[3] === 'function') {
       console.error(
@@ -2649,6 +2652,7 @@ if (__DEV__) {
     useState<S>(
       initialState: (() => S) | S,
     ): [S, Dispatch<BasicStateAction<S>>] {
+      console.log('useState source code [packages/react-reconciler/src/ReactFiberHooks.old.js - 2653]');
       currentHookNameInDev = 'useState';
       mountHookTypesDev();
       const prevDispatcher = ReactCurrentDispatcher.current;

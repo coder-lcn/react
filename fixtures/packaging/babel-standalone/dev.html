@@ -1,14 +1,23 @@
 <html>
-  <body>
-    <script src="../../../build/node_modules/react/umd/react.development.js"></script>
-    <script src="../../../build/node_modules/react-dom/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/babel-standalone@6/babel.js"></script>
-    <div id="container"></div>
-    <script type="text/babel">
-      ReactDOM.render(
-        <h1>Hello World!</h1>,
-        document.getElementById('container')
-      );
-    </script>
-  </body>
+
+<body>
+  <script src="../../../build/node_modules/react/umd/react.development.js"></script>
+  <script src="../../../build/node_modules/react-dom/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.js"></script>
+  <div id="container"></div>
+  <script type="text/babel">
+    const App = () => {
+      const [msg, setMsg] = React.useState('hello');
+      return <div>
+        <p>{msg}</p>
+        <button onClick={() => setMsg('hello world')}>修改</button>
+      </div>
+    }
+
+    const container = document.getElementById('container');
+    const root = ReactDOM.createRoot(container); // createRoot(container!) if you use TypeScript
+    root.render(<App tab="home" />);
+  </script>
+</body>
+
 </html>
